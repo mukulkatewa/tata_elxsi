@@ -89,7 +89,7 @@ def render_speedometer(speed: float) -> None:
     ))
     
     fig.update_layout(**GAUGE_THEME)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 
 def render_tyre_pressure_gauge(pressure: float, position: str) -> None:
@@ -125,7 +125,7 @@ def render_tyre_pressure_gauge(pressure: float, position: str) -> None:
     ))
     
     fig.update_layout(**GAUGE_THEME)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 
 def render_battery_gauge(soc: float) -> None:
@@ -161,7 +161,7 @@ def render_battery_gauge(soc: float) -> None:
     ))
     
     fig.update_layout(**GAUGE_THEME)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 
 def render_temperature_gauge(temp: float, label: str) -> None:
@@ -197,4 +197,4 @@ def render_temperature_gauge(temp: float, label: str) -> None:
     ))
     
     fig.update_layout(**GAUGE_THEME)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')

@@ -78,4 +78,4 @@ def render_alert_history_table(alerts: List[Alert]) -> None:
     df = pd.DataFrame(alert_data)
     
     # Display as Streamlit dataframe
-    st.dataframe(df, use_container_width=True, hide_index=True)
+    st.dataframe(df, width='stretch', hide_index=True)

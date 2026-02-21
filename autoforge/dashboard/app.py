@@ -133,12 +133,12 @@ def render_scenario_controls():
     col1, col2 = st.sidebar.columns(2)
     
     with col1:
-        if st.button("Apply", use_container_width=True):
+        if st.button("Apply", width='stretch'):
             data_bridge.apply_scenario(selected_scenario)
             st.success(f"Applied: {selected_scenario}")
     
     with col2:
-        if st.button("Reset", use_container_width=True):
+        if st.button("Reset", width='stretch'):
             data_bridge.reset_simulator()
             st.success("Reset to normal mode")
     
@@ -305,7 +305,7 @@ with tab1:
     if not history_df.empty:
         # Display most recent signals at the top
         display_df = history_df.tail(20).sort_values("timestamp", ascending=False)
-        st.dataframe(display_df, use_container_width=True, hide_index=True)
+        st.dataframe(display_df, width='stretch', hide_index=True)
     else:
         st.info("No signal data available yet")
 

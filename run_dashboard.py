@@ -95,10 +95,21 @@ def main():
     # Print usage instructions
     print_usage_instructions()
     
-    # Launch the dashboard using streamlit
+    # Add project root to PYTHONPATH so Streamlit can import autoforge module
+    project_root = os.path.abspath(os.path.dirname(__file__))
+    env = os.environ.copy()
+    
+    # Prepend project root to PYTHONPATH (or create it if it doesn't exist)
+    if 'PYTHONPATH' in env:
+        env['PYTHONPATH'] = f"{project_root}{os.pathsep}{env['PYTHONPATH']}"
+    else:
+        env['PYTHONPATH'] = project_root
+    
+    # Launch the dashboard using streamlit with updated environment
     try:
         subprocess.run(
             ["streamlit", "run", "autoforge/dashboard/app.py"],
+            env=env,
             check=True
         )
     except subprocess.CalledProcessError as e:

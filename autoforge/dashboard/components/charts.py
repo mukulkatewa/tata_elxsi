@@ -91,14 +91,14 @@ def render_tyre_pressure_trend(history_df: pd.DataFrame) -> None:
     )
     
     fig.update_layout(
-        **CHART_THEME,
+        **battery_theme,
         title={"text": "Tyre Pressure Trend", "font": {"color": "white"}},
         xaxis_title="Time",
         yaxis_title="Pressure (kPa)",
         legend={"font": {"color": "white"}}
     )
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 
 def render_battery_trend(history_df: pd.DataFrame) -> None:
@@ -145,8 +145,11 @@ def render_battery_trend(history_df: pd.DataFrame) -> None:
         yaxis="y2"
     ))
     
+    # Create a modified theme for battery_trend that excludes yaxis
+    battery_theme = {k: v for k, v in CHART_THEME.items() if k != "yaxis"}
+    
     fig.update_layout(
-        **CHART_THEME,
+        **battery_theme,
         title={"text": "Battery & Range Trend", "font": {"color": "white"}},
         xaxis_title="Time",
         yaxis=dict(
@@ -164,7 +167,7 @@ def render_battery_trend(history_df: pd.DataFrame) -> None:
         legend={"font": {"color": "white"}}
     )
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 
 def render_speed_trend(history_df: pd.DataFrame) -> None:
@@ -198,14 +201,14 @@ def render_speed_trend(history_df: pd.DataFrame) -> None:
     ))
     
     fig.update_layout(
-        **CHART_THEME,
+        **battery_theme,
         title={"text": "Vehicle Speed Trend", "font": {"color": "white"}},
         xaxis_title="Time",
         yaxis_title="Speed (kmh)",
         legend={"font": {"color": "white"}}
     )
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 
 def render_temperature_trend(history_df: pd.DataFrame) -> None:
@@ -265,11 +268,11 @@ def render_temperature_trend(history_df: pd.DataFrame) -> None:
     )
     
     fig.update_layout(
-        **CHART_THEME,
+        **battery_theme,
         title={"text": "Temperature Trend", "font": {"color": "white"}},
         xaxis_title="Time",
         yaxis_title="Temperature (°C)",
         legend={"font": {"color": "white"}}
     )
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
