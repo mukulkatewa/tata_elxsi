@@ -72,6 +72,8 @@ class VehicleSimulator:
         - tyre_pressure: ±1 kPa
         - battery_soc: -0.05% (drain)
         
+        In scenario mode, applies deterministic progression toward target values.
+        
         Updates ev_range based on battery_soc and gear_position.
         
         Returns:
@@ -80,8 +82,67 @@ class VehicleSimulator:
         # Increment tick count
         self._tick_count += 1
         
-        # Apply random walk updates in normal mode
-        if not self._scenario_state.get("active", False):
+        # Check if a scenario is active
+        if self._scenario_state.get("active", False):
+            # Apply scenario progression logic for signal_trends
+            trends = self._scenario_state.get("trends", {})
+            start_tick = self._scenario_state.get("start_tick", 0)
+            ticks_elapsed = self._tick_count - start_tick
+            
+            for signal_name, (target_value, ticks_to_reach) in trends.items():
+                if hasattr(self, signal_name):
+                    current_value = getattr(self, signal_name)
+                    
+                    # Calculate remaining ticks
+                    remaining_ticks = ticks_to_reach - ticks_elapsed
+                    
+                    if remaining_ticks > 0:
+                        # Calculate delta per tick: (target - current) / remaining_ticks
+                        delta = (target_value - current_value) / remaining_ticks
+                        new_value = current_value + delta
+                        
+                        # Apply the update
+                        setattr(self, signal_name, new_value)
+                    else:
+                        # Scenario complete, set to target value
+                        setattr(self, signal_name, target_value)
+            
+            # Apply small random variations to non-trend signals for realism
+            # (but keep them smaller than normal mode)
+            if "vehicle_speed" not in trends:
+                self.vehicle_speed += np.random.uniform(-2.0, 2.0)
+                self.vehicle_speed = np.clip(self.vehicle_speed, 0.0, 200.0)
+            
+            # Apply minimal variations to other signals not in trends
+            if "tyre_pressure_fl" not in trends:
+                self.tyre_pressure_fl += np.random.uniform(-0.5, 0.5)
+                self.tyre_pressure_fl = np.clip(self.tyre_pressure_fl, 150.0, 350.0)
+            
+            if "tyre_pressure_fr" not in trends:
+                self.tyre_pressure_fr += np.random.uniform(-0.5, 0.5)
+                self.tyre_pressure_fr = np.clip(self.tyre_pressure_fr, 150.0, 350.0)
+            
+            if "tyre_pressure_rl" not in trends:
+                self.tyre_pressure_rl += np.random.uniform(-0.5, 0.5)
+                self.tyre_pressure_rl = np.clip(self.tyre_pressure_rl, 150.0, 350.0)
+            
+            if "tyre_pressure_rr" not in trends:
+                self.tyre_pressure_rr += np.random.uniform(-0.5, 0.5)
+                self.tyre_pressure_rr = np.clip(self.tyre_pressure_rr, 150.0, 350.0)
+            
+            if "battery_soc" not in trends:
+                self.battery_soc -= 0.05
+                self.battery_soc = np.clip(self.battery_soc, 0.0, 100.0)
+            
+            if "motor_temperature" not in trends:
+                self.motor_temperature += np.random.uniform(-0.3, 0.3)
+                self.motor_temperature = np.clip(self.motor_temperature, 20.0, 120.0)
+            
+            if "coolant_temperature" not in trends:
+                self.coolant_temperature += np.random.uniform(-0.3, 0.3)
+                self.coolant_temperature = np.clip(self.coolant_temperature, 20.0, 110.0)
+        else:
+            # Apply random walk updates in normal mode
             # Vehicle speed: ±5 kmh
             self.vehicle_speed += np.random.uniform(-5.0, 5.0)
             self.vehicle_speed = np.clip(self.vehicle_speed, 0.0, 200.0)
@@ -270,3 +331,57 @@ class VehicleSimulator:
             ))
         
         return alerts
+
+    def trigger_scenario(self, scenario_name: str) -> None:
+        """
+        Apply a fault scenario to the simulator.
+        
+        This method imports and calls apply_scenario from the scenarios module,
+        which will update the simulator's state and _scenario_state.
+        
+        Args:
+            scenario_name: Name of the scenario to apply (e.g., "tyre_puncture", "low_battery")
+        
+        Raises:
+            ValueError: If scenario_name is not found in SCENARIOS dictionary
+        """
+        from .scenarios import apply_scenario
+        apply_scenario(self, scenario_name)
+    
+    def reset(self) -> None:
+        """
+        Reset simulator to normal operating mode.
+        
+        This method:
+        1. Reinitializes all signals to default values
+        2. Clears _scenario_state
+        3. Resets _tick_count to 0
+        """
+        # Reinitialize all signals to default values
+        self.vehicle_speed = 60.0  # kmh
+        
+        # Tyre pressures (all four tyres)
+        self.tyre_pressure_fl = 220.0  # kPa (front-left)
+        self.tyre_pressure_fr = 220.0  # kPa (front-right)
+        self.tyre_pressure_rl = 220.0  # kPa (rear-left)
+        self.tyre_pressure_rr = 220.0  # kPa (rear-right)
+        
+        # Battery and range
+        self.battery_soc = 85.0  # %
+        self.ev_range = 425.0  # km (85% * 5.0)
+        
+        # Control positions
+        self.throttle_position = 30.0  # %
+        self.brake_position = 0.0  # %
+        self.gear_position = 4  # 0-8
+        self.steering_angle = 0.0  # degrees
+        
+        # Temperatures
+        self.motor_temperature = 80.0  # C
+        self.coolant_temperature = 75.0  # C
+        
+        # Clear scenario state
+        self._scenario_state = {"name": "normal", "active": False}
+        
+        # Reset tick count
+        self._tick_count = 0

@@ -51,7 +51,7 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
     - Define Alert with signal_name, current_value, threshold_value, severity, message, timestamp fields
     - _Requirements: 3.10_
   
-  - [-] 3.2 Implement VehicleSimulator get_alert_status method
+  - [x] 3.2 Implement VehicleSimulator get_alert_status method
     - Evaluate tyre pressure thresholds (WARNING < 180 kPa, CRITICAL < 150 kPa) for all four tyres
     - Evaluate battery SOC thresholds (WARNING < 20%, CRITICAL < 10%)
     - Evaluate motor temperature thresholds (WARNING > 100 C, CRITICAL > 115 C)
@@ -75,19 +75,19 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 5. Implement fault scenario system
-  - [ ] 5.1 Create ScenarioDefinition dataclass and SCENARIOS dictionary
+  - [x] 5.1 Create ScenarioDefinition dataclass and SCENARIOS dictionary
     - Define ScenarioDefinition with name, description, signal_overrides, signal_trends fields
     - Implement SCENARIOS dictionary with tyre_puncture, low_battery, overheating, highway_cruise, city_driving
     - Define scenario specifications (tyre_puncture: 220→80 kPa over 30 ticks, low_battery: 3x drain, overheating: 80→118 C over 20 ticks, highway_cruise: 120 kmh ±2, city_driving: 0-60 kmh oscillation)
     - _Requirements: 2.7_
   
-  - [ ] 5.2 Implement apply_scenario function
+  - [x] 5.2 Implement apply_scenario function
     - Accept VehicleSimulator instance and scenario_name
     - Apply signal_overrides immediately
     - Initialize signal_trends progression state
     - _Requirements: 2.8_
   
-  - [ ] 5.3 Implement VehicleSimulator trigger_scenario and reset methods
+  - [x] 5.3 Implement VehicleSimulator trigger_scenario and reset methods
     - Implement trigger_scenario to call apply_scenario and update _scenario_state
     - Implement scenario progression logic in tick method (deterministic trend toward targets)
     - Implement reset method to clear scenario state and return to normal mode
@@ -108,7 +108,7 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
     - _Requirements: 2.2, 2.3, 2.4, 2.5, 2.6_
 
 - [ ] 6. Implement data bridge layer
-  - [ ] 6.1 Create data_bridge module with state management functions
+  - [-] 6.1 Create data_bridge module with state management functions
     - Implement initialize_simulator function using st.session_state
     - Implement get_next_tick function that calls simulator.tick() and appends to history buffer
     - Implement FIFO history buffer management (max 60 entries)
