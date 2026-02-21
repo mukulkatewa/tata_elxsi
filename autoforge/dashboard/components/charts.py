@@ -91,7 +91,7 @@ def render_tyre_pressure_trend(history_df: pd.DataFrame) -> None:
     )
     
     fig.update_layout(
-        **battery_theme,
+        **CHART_THEME,
         title={"text": "Tyre Pressure Trend", "font": {"color": "white"}},
         xaxis_title="Time",
         yaxis_title="Pressure (kPa)",
@@ -201,7 +201,7 @@ def render_speed_trend(history_df: pd.DataFrame) -> None:
     ))
     
     fig.update_layout(
-        **battery_theme,
+        **CHART_THEME,
         title={"text": "Vehicle Speed Trend", "font": {"color": "white"}},
         xaxis_title="Time",
         yaxis_title="Speed (kmh)",
@@ -268,7 +268,7 @@ def render_temperature_trend(history_df: pd.DataFrame) -> None:
     )
     
     fig.update_layout(
-        **battery_theme,
+        **CHART_THEME,
         title={"text": "Temperature Trend", "font": {"color": "white"}},
         xaxis_title="Time",
         yaxis_title="Temperature (°C)",
