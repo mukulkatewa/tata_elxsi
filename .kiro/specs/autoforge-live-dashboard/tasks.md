@@ -13,7 +13,7 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
   - _Requirements: 10.1, 10.2, 10.3, 10.4_
 
 - [ ] 2. Implement simulation layer core
-  - [-] 2.1 Create VehicleSimulator class with initialization
+  - [x] 2.1 Create VehicleSimulator class with initialization
     - Implement `__init__` method with scenario parameter
     - Initialize all 13 VSS signal state variables with realistic default values
     - Initialize internal state tracking variables (_scenario_state, _tick_count)
@@ -23,7 +23,7 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
     - **Property 1: Signal State Initialization Bounds**
     - **Validates: Requirements 1.2**
   
-  - [ ] 2.3 Implement VehicleSimulator tick method
+  - [x] 2.3 Implement VehicleSimulator tick method
     - Implement normal mode random walk logic for all signals
     - Apply signal-specific deltas (speed ±5 kmh, pressure ±1 kPa, battery -0.05%)
     - Implement battery-range coupling formula (ev_range = battery_soc * 5.0 with gear adjustments)
@@ -47,11 +47,11 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
     - _Requirements: 1.1, 1.2, 1.3_
 
 - [ ] 3. Implement alert generation system
-  - [ ] 3.1 Create Alert dataclass
+  - [x] 3.1 Create Alert dataclass
     - Define Alert with signal_name, current_value, threshold_value, severity, message, timestamp fields
     - _Requirements: 3.10_
   
-  - [ ] 3.2 Implement VehicleSimulator get_alert_status method
+  - [-] 3.2 Implement VehicleSimulator get_alert_status method
     - Evaluate tyre pressure thresholds (WARNING < 180 kPa, CRITICAL < 150 kPa) for all four tyres
     - Evaluate battery SOC thresholds (WARNING < 20%, CRITICAL < 10%)
     - Evaluate motor temperature thresholds (WARNING > 100 C, CRITICAL > 115 C)
