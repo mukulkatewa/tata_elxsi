@@ -1,0 +1,8 @@
+chromadb
+sentence-transformers
+langchain
+langchain-community
+python-dotenv
+pytest
+hypothesis
+openai

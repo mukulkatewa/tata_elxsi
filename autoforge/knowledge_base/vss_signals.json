@@ -1,0 +1,242 @@
+[
+  {
+    "signal_name": "Vehicle.Speed",
+    "datatype": "float",
+    "unit": "km/h",
+    "min_value": 0.0,
+    "max_value": 250.0,
+    "description": "Current vehicle speed measured by the speedometer. Represents the instantaneous speed of the vehicle."
+  },
+  {
+    "signal_name": "Vehicle.Acceleration.Longitudinal",
+    "datatype": "float",
+    "unit": "m/s2",
+    "min_value": -10.0,
+    "max_value": 10.0,
+    "description": "Longitudinal acceleration of the vehicle. Positive values indicate forward acceleration, negative values indicate braking."
+  },
+  {
+    "signal_name": "Vehicle.Acceleration.Lateral",
+    "datatype": "float",
+    "unit": "m/s2",
+    "min_value": -10.0,
+    "max_value": 10.0,
+    "description": "Lateral acceleration of the vehicle during cornering. Positive values indicate right turn, negative values indicate left turn."
+  },
+  {
+    "signal_name": "Vehicle.Chassis.Axle.Row1.Wheel.Left.Tire.Pressure",
+    "datatype": "float",
+    "unit": "kPa",
+    "min_value": 0.0,
+    "max_value": 500.0,
+    "description": "Tire pressure for the front left wheel. Measured in kilopascals for accurate pressure monitoring."
+  },
+  {
+    "signal_name": "Vehicle.Chassis.Axle.Row1.Wheel.Right.Tire.Pressure",
+    "datatype": "float",
+    "unit": "kPa",
+    "min_value": 0.0,
+    "max_value": 500.0,
+    "description": "Tire pressure for the front right wheel. Critical for vehicle safety and fuel efficiency."
+  },
+  {
+    "signal_name": "Vehicle.Chassis.Axle.Row2.Wheel.Left.Tire.Pressure",
+    "datatype": "float",
+    "unit": "kPa",
+    "min_value": 0.0,
+    "max_value": 500.0,
+    "description": "Tire pressure for the rear left wheel. Maintains optimal contact with road surface."
+  },
+  {
+    "signal_name": "Vehicle.Chassis.Axle.Row2.Wheel.Right.Tire.Pressure",
+    "datatype": "float",
+    "unit": "kPa",
+    "min_value": 0.0,
+    "max_value": 500.0,
+    "description": "Tire pressure for the rear right wheel. Essential for balanced vehicle handling."
+  },
+  {
+    "signal_name": "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current",
+    "datatype": "float",
+    "unit": "%",
+    "min_value": 0.0,
+    "max_value": 100.0,
+    "description": "Current state of charge of the traction battery. Indicates remaining battery capacity as a percentage."
+  },
+  {
+    "signal_name": "Vehicle.Powertrain.Range",
+    "datatype": "float",
+    "unit": "km",
+    "min_value": 0.0,
+    "max_value": 1000.0,
+    "description": "Estimated remaining range for electric vehicles. Calculated based on current battery charge and driving conditions."
+  },
+  {
+    "signal_name": "Vehicle.Chassis.Brake.PedalPosition",
+    "datatype": "float",
+    "unit": "%",
+    "min_value": 0.0,
+    "max_value": 100.0,
+    "description": "Brake pedal position as a percentage. Zero indicates no braking, 100 indicates full brake application."
+  },
+  {
+    "signal_name": "Vehicle.Chassis.Accelerator.PedalPosition",
+    "datatype": "float",
+    "unit": "%",
+    "min_value": 0.0,
+    "max_value": 100.0,
+    "description": "Accelerator pedal position as a percentage. Zero indicates no throttle, 100 indicates full throttle."
+  },
+  {
+    "signal_name": "Vehicle.Chassis.SteeringWheel.Angle",
+    "datatype": "float",
+    "unit": "degrees",
+    "min_value": -720.0,
+    "max_value": 720.0,
+    "description": "Steering wheel angle in degrees. Positive values indicate right turn, negative values indicate left turn."
+  },
+  {
+    "signal_name": "Vehicle.Powertrain.Transmission.CurrentGear",
+    "datatype": "int",
+    "unit": "gear",
+    "min_value": -1,
+    "max_value": 10,
+    "description": "Current gear position of the transmission. -1 indicates reverse, 0 indicates neutral, positive values indicate forward gears."
+  },
+  {
+    "signal_name": "Vehicle.Powertrain.ElectricMotor.Temperature",
+    "datatype": "float",
+    "unit": "celsius",
+    "min_value": -40.0,
+    "max_value": 200.0,
+    "description": "Temperature of the electric motor. Critical for monitoring motor health and preventing overheating."
+  },
+  {
+    "signal_name": "Vehicle.Powertrain.CombustionEngine.ECT",
+    "datatype": "float",
+    "unit": "celsius",
+    "min_value": -40.0,
+    "max_value": 150.0,
+    "description": "Engine coolant temperature for combustion engines. Indicates the operating temperature of the cooling system."
+  },
+  {
+    "signal_name": "Vehicle.Cabin.HVAC.AmbientAirTemperature",
+    "datatype": "float",
+    "unit": "celsius",
+    "min_value": -40.0,
+    "max_value": 60.0,
+    "description": "Ambient air temperature outside the vehicle. Used for climate control and driver information."
+  },
+  {
+    "signal_name": "Vehicle.Body.Lights.IsHighBeamOn",
+    "datatype": "boolean",
+    "unit": "bool",
+    "min_value": 0,
+    "max_value": 1,
+    "description": "Indicates whether high beam headlights are currently active. True when high beams are on, false otherwise."
+  },
+  {
+    "signal_name": "Vehicle.Body.Lights.IsBrakeOn",
+    "datatype": "boolean",
+    "unit": "bool",
+    "min_value": 0,
+    "max_value": 1,
+    "description": "Indicates whether brake lights are currently illuminated. Activated when brake pedal is pressed."
+  },
+  {
+    "signal_name": "Vehicle.OBD.EngineLoad",
+    "datatype": "float",
+    "unit": "%",
+    "min_value": 0.0,
+    "max_value": 100.0,
+    "description": "Current engine load as a percentage. Indicates how hard the engine is working relative to maximum capacity."
+  },
+  {
+    "signal_name": "Vehicle.OBD.ThrottlePosition",
+    "datatype": "float",
+    "unit": "%",
+    "min_value": 0.0,
+    "max_value": 100.0,
+    "description": "Throttle valve position as a percentage. Directly correlates with air intake and engine power output."
+  },
+  {
+    "signal_name": "Vehicle.Powertrain.TractionBattery.Charging.IsCharging",
+    "datatype": "boolean",
+    "unit": "bool",
+    "min_value": 0,
+    "max_value": 1,
+    "description": "Indicates whether the traction battery is currently charging. True when connected to charging station."
+  },
+  {
+    "signal_name": "Vehicle.Powertrain.TractionBattery.Charging.ChargeRate",
+    "datatype": "float",
+    "unit": "kW",
+    "min_value": 0.0,
+    "max_value": 350.0,
+    "description": "Current charging rate in kilowatts. Indicates the power being delivered to the battery during charging."
+  },
+  {
+    "signal_name": "Vehicle.Chassis.ParkingBrake.IsEngaged",
+    "datatype": "boolean",
+    "unit": "bool",
+    "min_value": 0,
+    "max_value": 1,
+    "description": "Indicates whether the parking brake is engaged. True when parking brake is active."
+  },
+  {
+    "signal_name": "Vehicle.Driver.Seatbelt.IsFastened",
+    "datatype": "boolean",
+    "unit": "bool",
+    "min_value": 0,
+    "max_value": 1,
+    "description": "Indicates whether the driver's seatbelt is fastened. Critical safety indicator for vehicle operation."
+  },
+  {
+    "signal_name": "Vehicle.ADAS.CruiseControl.IsActive",
+    "datatype": "boolean",
+    "unit": "bool",
+    "min_value": 0,
+    "max_value": 1,
+    "description": "Indicates whether cruise control is currently active. True when cruise control is maintaining set speed."
+  },
+  {
+    "signal_name": "Vehicle.ADAS.CruiseControl.SpeedSet",
+    "datatype": "float",
+    "unit": "km/h",
+    "min_value": 0.0,
+    "max_value": 200.0,
+    "description": "Target speed set for cruise control system. Represents the speed the vehicle will maintain automatically."
+  },
+  {
+    "signal_name": "Vehicle.Powertrain.TractionBattery.Temperature.Average",
+    "datatype": "float",
+    "unit": "celsius",
+    "min_value": -40.0,
+    "max_value": 80.0,
+    "description": "Average temperature of the traction battery pack. Critical for battery health and performance monitoring."
+  },
+  {
+    "signal_name": "Vehicle.Chassis.Axle.Row1.Wheel.Left.Speed",
+    "datatype": "float",
+    "unit": "km/h",
+    "min_value": 0.0,
+    "max_value": 300.0,
+    "description": "Rotational speed of the front left wheel. Used for traction control and ABS systems."
+  },
+  {
+    "signal_name": "Vehicle.Powertrain.FuelSystem.Level",
+    "datatype": "float",
+    "unit": "%",
+    "min_value": 0.0,
+    "max_value": 100.0,
+    "description": "Current fuel level as a percentage of tank capacity. Indicates remaining fuel for combustion engine vehicles."
+  },
+  {
+    "signal_name": "Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete",
+    "datatype": "float",
+    "unit": "minutes",
+    "min_value": 0.0,
+    "max_value": 1440.0,
+    "description": "Estimated time remaining to complete battery charging. Calculated based on current charge rate and target charge level."
+  }
+]

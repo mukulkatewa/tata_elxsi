@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.10)
+
+project({{SERVICE_NAME}})
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Compiler flags for automotive embedded software
+add_compile_options(-Wall -Wextra -Werror)
+
+# Define executable
+add_executable({{SERVICE_NAME}} {{SERVICE_NAME}}.cpp)
