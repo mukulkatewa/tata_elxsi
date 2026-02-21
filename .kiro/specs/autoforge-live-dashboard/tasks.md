@@ -108,7 +108,7 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
     - _Requirements: 2.2, 2.3, 2.4, 2.5, 2.6_
 
 - [ ] 6. Implement data bridge layer
-  - [-] 6.1 Create data_bridge module with state management functions
+  - [x] 6.1 Create data_bridge module with state management functions
     - Implement initialize_simulator function using st.session_state
     - Implement get_next_tick function that calls simulator.tick() and appends to history buffer
     - Implement FIFO history buffer management (max 60 entries)
@@ -133,12 +133,12 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 8. Implement gauge visualization components
-  - [ ] 8.1 Create gauge_components module with dark theme configuration
+  - [x] 8.1 Create gauge_components module with dark theme configuration
     - Define GAUGE_THEME dictionary with dark background (#0d1117) and styling
     - Define color range configurations for speedometer, tyre pressure, battery, temperature
     - _Requirements: 5.9, 5.10_
   
-  - [ ] 8.2 Implement gauge rendering functions
+  - [x] 8.2 Implement gauge rendering functions
     - Implement render_speedometer with 0-200 kmh range and green/yellow/red zones
     - Implement render_tyre_pressure_gauge with 150-350 kPa range and red/green/yellow zones
     - Implement render_battery_gauge as horizontal bar with 0-100% range and red/yellow/green zones
@@ -154,12 +154,12 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8_
 
 - [ ] 9. Implement chart visualization components
-  - [ ] 9.1 Create chart_components module with dark theme configuration
+  - [x] 9.1 Create chart_components module with dark theme configuration
     - Define CHART_THEME dictionary with dark background and styling
     - Define THRESHOLD_LINE_STYLE for warning lines
     - _Requirements: 6.8, 6.9_
   
-  - [ ] 9.2 Implement chart rendering functions
+  - [x] 9.2 Implement chart rendering functions
     - Implement render_tyre_pressure_trend with 4 line traces and 180 kPa threshold line
     - Implement render_battery_trend as area chart with dual Y-axes (soc % and range km)
     - Implement render_speed_trend as line chart
@@ -179,7 +179,7 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6_
 
 - [ ] 10. Implement alert display components
-  - [ ] 10.1 Create alert_components module
+  - [x] 10.1 Create alert_components module
     - Implement render_alert_panel that displays alerts with severity-based styling (st.error for CRITICAL, st.warning for WARNING)
     - Implement render_alert_history_table that displays alerts as DataFrame
     - Format alert messages as "[SEVERITY] Signal: value (threshold: X) - Message"
@@ -197,18 +197,18 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 12. Implement main dashboard application
-  - [ ] 12.1 Create app.py with page configuration and dark theme
+  - [x] 12.1 Create app.py with page configuration and dark theme
     - Set page config with title "AutoForge — Vehicle Health", wide layout, expanded sidebar
     - Inject dark theme CSS for consistent styling
     - _Requirements: 8.1_
   
-  - [ ] 12.2 Implement header and sidebar
+  - [x] 12.2 Implement header and sidebar
     - Implement render_header with logo and "🟢 LIVE" status indicator
     - Implement sidebar with scenario selector dropdown, Apply button, Reset button, tick speed slider
     - Implement render_generated_services_list that checks outputs folder and displays services or "No generated services available"
     - _Requirements: 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 12.1, 12.2_
   
-  - [ ] 12.3 Implement main content layout
+  - [x] 12.3 Implement main content layout
     - Initialize simulator on first run using data_bridge.initialize_simulator
     - Implement continuous refresh loop with get_next_tick, get_current_alerts, get_history
     - Arrange alerts row at top
@@ -227,7 +227,7 @@ This implementation plan breaks down the AutoForge Live Vehicle Dashboard into d
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 8.10, 12.1, 12.2_
 
 - [ ] 13. Create entry point script
-  - [ ] 13.1 Create run_dashboard.py
+  - [x] 13.1 Create run_dashboard.py
     - Check if streamlit is installed using importlib
     - If not installed, print installation instructions and exit with code 1
     - If installed, execute "streamlit run autoforge/dashboard/app.py" using subprocess
