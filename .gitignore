@@ -42,3 +42,5 @@ Thumbs.db
 
 # Sentence Transformers Cache
 .cache/
+# Environment variables (contains API keys)
+.env
