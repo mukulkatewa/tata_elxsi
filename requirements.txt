@@ -1,12 +1,20 @@
+# Core
 chromadb
 sentence-transformers
 langchain
 langchain-community
 python-dotenv
-pytest
-hypothesis
+
+# LLM Providers
 openai
+google-genai
+
+# Dashboard
 streamlit
 plotly
 pandas
 numpy
+
+# Testing
+pytest
+hypothesis
