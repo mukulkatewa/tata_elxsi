@@ -1,0 +1,34 @@
+You are an expert test engineer specializing in automotive software testing.
+Generate comprehensive test code for the following service.
+
+## Original Requirement:
+{requirement}
+
+## Generated Service Code:
+```
+{generated_code}
+```
+
+## Service Name: {service_name}
+
+## Instructions:
+1. Generate a complete, compilable C++ test file
+2. Cover these test categories:
+   - Normal operation tests (happy path)
+   - Boundary condition tests (edge cases)
+   - Failure/error scenario tests
+   - Signal threshold validation tests
+3. Use assertions for verification
+4. Include test for each public interface method
+5. Test with realistic automotive signal values
+6. Follow MISRA-C++ guidelines in test code
+7. Include a main() function that runs all tests
+
+## Test Structure:
+- Test class/fixture for the service
+- Individual test functions for each scenario
+- Setup and teardown helpers
+- Clear PASS/FAIL output messages
+
+Return ONLY the complete test code wrapped in ```cpp ... ``` markers.
+No explanations outside the code.
